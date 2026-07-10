@@ -116,7 +116,7 @@ Market-1501 remains one of the most widely adopted benchmarks in person re-ident
 
 ### Performance Analysis
 
-The baseline model achieved 79.4% Rank-1 accuracy and 66.7% mAP, demonstrating that the ResNet-50 + Triplet Loss framework learns highly discriminative feature embeddings for person re-identification. These numbers are consistent with published triplet-loss baselines on Market-1501, which typically report Rank-1 in the 80–88% range and mAP in the 55–72% range without additional tricks such as re-ranking.
+The baseline model achieved 79.4% Rank-1 accuracy and 66.7% mAP, demonstrating that the proposed ResNet-50 + Batch-Hard Triplet Loss framework successfully learns discriminative embeddings for person re-identification on the Market-1501 benchmark. These results provide a strong baseline for evaluating the effect of embedding perturbation.
 
 Introducing a small perturbation (σ = 0.05) reduced Rank-1 accuracy by approximately 9 percentage points (79.4% → 70.1%) and mAP by roughly 12 points (66.7% → 54.6%), while retrieval performance remained relatively strong — Rank-5 stayed above 90%. This suggests that mild embedding perturbation can obscure some identity information without severely damaging the utility of the learned representation.
 
@@ -135,8 +135,8 @@ Without perturbation, embeddings belonging to the same identity form compact and
 ## Key Findings
 
 - ResNet-50 with Batch-Hard Triplet Loss provides a strong, literature-consistent baseline for person re-identification.
-- Moderate embedding perturbation (σ ≈ 0.05) preserves a significant portion of retrieval performance while measurably reducing identity information.
-- A sharp transition occurs between σ = 0.05 and σ = 0.10, beyond which retrieval performance collapses rapidly.
+- Moderate embedding perturbation (σ = 0.05) preserves a significant portion of retrieval performance while introducing controlled perturbations to the learned embedding representation.
+- A distinct transition occurs between σ = 0.05 and σ = 0.10, where retrieval performance begins to degrade rapidly across all evaluation metrics. This region represents the practical       turning point of the observed privacy–utility trade-off.
 - The study highlights the practical privacy–utility trade-off that motivates current Responsible AI research in surveillance systems.
 
 ## Ablation Study
